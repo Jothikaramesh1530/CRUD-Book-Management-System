@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ action }} Book</title>
+</head>
+<body>
+    <h2>{{ action }} Book</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Title:</label><br>
+            <input type="text" name="title" value="{{ book.title|default:'' }}" required>
+        </p>
+        <p>
+            <label>Author:</label><br>
+            <input type="text" name="author" value="{{ book.author|default:'' }}" required>
+        </p>
+        <p>
+            <label>Price:</label><br>
+            <input type="number" name="price" value="{{ book.price|default:'' }}" required>
+        </p>
+        
+        <button type="submit">Save</button>
+        <a href="{% url 'book_list' %}">Cancel</a>
+    </form>
+</body>
+</html>
